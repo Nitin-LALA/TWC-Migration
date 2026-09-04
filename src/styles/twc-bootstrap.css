@@ -1,0 +1,260 @@
+/* Small supplementary rules for the react-bootstrap components — fills the
+   gaps Bootstrap's utility classes don't cover (exact icon-button sizing,
+   brand-color hover states) using the same --v-* tokens as the rest of the
+   site, so Bootstrap-rendered UI matches the existing design system. */
+
+/* Bootstrap's Reboot ships unlayered, so its `a { text-decoration: underline }`
+   beats Tailwind's own (layered, @layer base) anchor reset regardless of
+   source order — this file is unlayered too, loaded last, so it wins back
+   the site's original underline-free link style everywhere. */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.twc-header-icon {
+  width: 36px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.twc-nav-link {
+  color: var(--v-text-soft);
+  transition: color 0.2s;
+}
+.twc-nav-link:hover {
+  color: var(--v-text);
+}
+.twc-nav-link-active {
+  background: var(--v-cream);
+  color: var(--v-text) !important;
+}
+
+.twc-menu-btn {
+  background: var(--v-cream) !important;
+  border: none !important;
+  color: var(--v-text) !important;
+}
+.twc-menu-btn:hover {
+  background: var(--v-ink-tint) !important;
+}
+
+.twc-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, opacity 0.2s;
+}
+.twc-icon-btn-outline {
+  border: 1px solid var(--v-line);
+  color: var(--v-text);
+  background: var(--v-white);
+}
+.twc-icon-btn-outline:hover {
+  background: var(--v-cream);
+}
+.twc-icon-btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+.twc-icon-btn-whatsapp:hover {
+  opacity: 0.9;
+}
+
+.twc-btn-contact {
+  background: var(--v-ink-deep) !important;
+  border-color: var(--v-ink-deep) !important;
+}
+.twc-btn-contact:hover {
+  background: var(--v-text) !important;
+  border-color: var(--v-text) !important;
+}
+
+.twc-mega-menu.offcanvas {
+  height: 100vh !important;
+}
+.twc-mega-menu .offcanvas-body {
+  overflow-y: auto;
+}
+
+.twc-close-btn {
+  width: 48px;
+  height: 48px;
+  border: none !important;
+  background: var(--v-cream) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.twc-eyebrow {
+  letter-spacing: 0.08em;
+}
+
+.twc-menu-link {
+  font-size: 15px;
+}
+.twc-menu-link:hover {
+  color: var(--v-ink) !important;
+}
+
+.twc-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--v-line-on-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--v-white);
+  transition: background 0.2s;
+}
+.twc-social-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.twc-footer-link:hover {
+  color: var(--v-white) !important;
+}
+
+.twc-hero-h1 {
+  font-size: 48px;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+@media (min-width: 576px) {
+  .twc-hero-h1 { font-size: 64px; }
+}
+@media (min-width: 992px) {
+  .twc-hero-h1 { font-size: 84px; }
+}
+
+.twc-avatar-stack > * {
+  margin-left: -10px;
+  box-shadow: 0 0 0 2px var(--v-cream);
+  border-radius: 999px;
+}
+.twc-avatar-stack > *:first-child {
+  margin-left: 0;
+}
+
+.twc-cat-tile img {
+  transition: transform 0.5s;
+}
+.twc-cat-tile:hover img {
+  transform: scale(1.05);
+}
+
+.twc-gradient-top {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 60%);
+}
+
+.twc-newsletter-input {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--v-line-on-dark) !important;
+  border-radius: 0 !important;
+  color: var(--v-white) !important;
+  font-size: 15px;
+  padding: 0.75rem 0.25rem;
+  box-shadow: none !important;
+}
+.twc-newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.twc-newsletter-input:focus {
+  border-bottom-color: var(--v-accent) !important;
+}
+
+.twc-therapies-h1 {
+  font-size: 34px;
+  line-height: 1.02;
+  max-width: 820px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+@media (min-width: 576px) {
+  .twc-therapies-h1 { font-size: 50px; }
+}
+@media (min-width: 992px) {
+  .twc-therapies-h1 { font-size: 64px; }
+}
+
+.twc-cat-link {
+  transition: background 0.2s;
+}
+.twc-cat-link:hover {
+  background: var(--v-cream);
+}
+
+.twc-back-link {
+  text-decoration: none;
+}
+.twc-back-link:hover {
+  color: var(--v-ink) !important;
+}
+
+.twc-related-link {
+  transition: background 0.2s;
+}
+.twc-related-link:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.twc-form-input {
+  border: 1px solid var(--v-line) !important;
+  background: var(--v-cream) !important;
+  border-radius: var(--v-radius-photo) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 14.5px !important;
+  box-shadow: none !important;
+}
+.twc-form-input:focus {
+  border-color: var(--v-ink) !important;
+}
+
+.twc-contact-h1 {
+  font-size: 42px;
+  line-height: 1;
+}
+@media (min-width: 576px) {
+  .twc-contact-h1 { font-size: 60px; }
+}
+@media (min-width: 992px) {
+  .twc-contact-h1 { font-size: 72px; }
+}
+
+.twc-locations-h1 {
+  font-size: 34px;
+  line-height: 1.02;
+  max-width: 760px;
+  color: var(--v-text);
+}
+@media (min-width: 576px) {
+  .twc-locations-h1 { font-size: 48px; }
+}
+@media (min-width: 992px) {
+  .twc-locations-h1 { font-size: 58px; }
+}
+
+.twc-city-pill {
+  background: var(--v-white);
+  border: 1px solid var(--v-line);
+  color: var(--v-text);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.twc-city-pill:hover {
+  border-color: var(--v-ink);
+  color: var(--v-text);
+}
+.twc-city-pill-active,
+.twc-city-pill-active:hover {
+  background: var(--v-ink);
+  border-color: var(--v-ink);
+  color: var(--v-white);
+}

@@ -1,0 +1,29 @@
+// Bootstrap 5 theme entry — maps TWC's real brand tokens onto Bootstrap's
+// Sass variables so react-bootstrap components (Button, Card, Navbar, Form...)
+// render in brand color out of the box, instead of Bootstrap's default blue.
+$primary: #15919A;      // TWC teal (matches --v-ink)
+$secondary: #5fc6cf;    // TWC secondary teal
+$success: #15919A;
+$info: #BEFCFF;         // TWC pale cyan (matches --v-accent)
+$dark: #15191A;         // matches --v-text
+$light: #F1EEE6;        // matches --v-cream
+$body-color: #15191A;
+$body-bg: #F1EEE6;
+$link-color: #0E6068;   // matches --v-ink-deep
+$link-hover-color: #15919A;
+
+$font-family-sans-serif: "Manrope", "Manrope Fallback", ui-sans-serif, sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$border-radius: 4px;
+$border-radius-lg: 20px;
+$border-radius-sm: 4px;
+$border-radius-pill: 999px;
+
+$btn-border-radius: 999px;
+$btn-border-radius-lg: 999px;
+$btn-border-radius-sm: 999px;
+$card-border-radius: 20px;
+$card-border-width: 0;
+
+@import "bootstrap/scss/bootstrap";

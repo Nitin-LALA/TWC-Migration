@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+:root {
+  /* ============ SYSTEM A (current) — used by About/Contact/Therapies/
+     Locations/Blog/legal pages until they're migrated to System V ============ */
+  --cream: #FBFEFE;
+  --cream-2: #EAF7F7;
+  --paper: #FFFFFF;
+
+  --ink: #0A0A0A;
+  --text: #14181A;
+  --text-soft: #55666A;
+  --text-faint: #8FA0A2;
+
+  --forest: #179099;
+  --forest-deep: #0D6069;
+  --forest-tint: #BEFCFF;
+  --forest-soft: #5FC6CF;
+
+  --charcoal: #000000;
+  --charcoal-2: #141414;
+
+  --gold: #5FC6CF;
+  --gold-soft: #BEFCFF;
+
+  --line: rgba(10, 10, 10, 0.1);
+  --line-soft: rgba(10, 10, 10, 0.07);
+  --line-on-dark: rgba(255, 255, 255, 0.14);
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 32px;
+  --shadow-1: 0 1px 2px rgba(10, 10, 10, 0.05), 0 12px 32px rgba(10, 10, 10, 0.07);
+  --shadow-2: 0 24px 70px rgba(0, 0, 0, 0.22);
+
+  --maxw: 1280px;
+  --gap: 18px;
+
+  --font-display: var(--font-manrope), ui-sans-serif, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, sans-serif;
+
+  /* ============ SYSTEM V (Vitalis-brief) — Home + Header + Footer ============ */
+  --v-cream: #F1EEE6;
+  --v-white: #FFFFFF;
+  --v-ink: #15919A;
+  --v-ink-deep: #0E6068;
+  --v-ink-tint: #E4F4F5;
+  --v-accent: #BEFCFF;
+  --v-accent-deep: #8FE9EF;
+  --v-muted: #8C8C84;
+  --v-muted-2: #B9B6AC;
+  --v-text: #15191A;
+  --v-text-soft: #55605F;
+  --v-charcoal: #000000;
+  --v-line: rgba(21, 25, 26, 0.12);
+  --v-line-on-dark: rgba(255, 255, 255, 0.16);
+  --v-radius-card: 20px;
+  --v-radius-photo: 4px;
+  --v-shadow-nav: 0 4px 24px rgba(21,25,26,0.08);
+  --v-shadow-card: 0 20px 50px rgba(21,25,26,0.10);
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-text-faint: var(--text-faint);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-forest-tint: var(--forest-tint);
+  --color-forest-soft: var(--forest-soft);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-2: var(--charcoal-2);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --color-v-cream: var(--v-cream);
+  --color-v-white: var(--v-white);
+  --color-v-ink: var(--v-ink);
+  --color-v-ink-deep: var(--v-ink-deep);
+  --color-v-ink-tint: var(--v-ink-tint);
+  --color-v-accent: var(--v-accent);
+  --color-v-accent-deep: var(--v-accent-deep);
+  --color-v-muted: var(--v-muted);
+  --color-v-muted-2: var(--v-muted-2);
+  --color-v-text: var(--v-text);
+  --color-v-text-soft: var(--v-text-soft);
+  --color-v-charcoal: var(--v-charcoal);
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--v-cream);
+    color: var(--v-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 500; }
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--v-ink); outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+@layer components {
+
+/* =====================================================================
+   SYSTEM A — rounded "panel islands" on a cream/white canvas.
+   Still powers About, Contact, Therapies, Locations, Blog, legal pages.
+   ===================================================================== */
+.shell { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gap); }
+.stack { display: flex; flex-direction: column; gap: 0; padding: 6px 0 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(24px, 4vw, 64px); }
+
+.panel { border-radius: 0; overflow: hidden; position: relative; }
+.panel-pad { padding: clamp(40px, 6vw, 88px) clamp(20px, 5vw, 72px); }
+.panel-pad-sm { padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 56px); }
+.panel-paper { background: var(--paper); }
+.panel-cream2 { background: var(--cream-2); }
+.panel-forest {
+  color: var(--cream);
+  background: radial-gradient(120% 140% at 15% 0%, #1EA6B0 0%, var(--forest) 45%, var(--forest-deep) 100%);
+}
+.panel-charcoal {
+  color: var(--cream);
+  background: radial-gradient(120% 140% at 85% 100%, #0D2A2C 0%, var(--charcoal) 55%);
+}
+.panel-forest, .panel-charcoal { border-radius: var(--radius-l); margin: var(--gap) 0; }
+
+@media (max-width: 720px) {
+  :root { --gap: 10px; --radius-l: 22px; }
+  .panel-pad { padding: 32px 20px; }
+}
+
+.h-xl { font-size: clamp(38px, 6.4vw, 78px); line-height: 0.98; letter-spacing: -0.02em; font-weight: 400; }
+.h-lg { font-size: clamp(28px, 4.4vw, 52px); line-height: 1.02; letter-spacing: -0.015em; font-weight: 400; }
+.h-md { font-size: clamp(21px, 2.6vw, 28px); line-height: 1.15; }
+.lede { font-size: 18px; color: var(--text-soft); max-width: 560px; line-height: 1.6; }
+.it { font-style: italic; }
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--forest-soft), var(--forest));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--forest-deep);
+  background: var(--forest-tint);
+  padding: 6px 12px 6px 9px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--forest-deep); flex-shrink: 0; }
+.eyebrow.on-dark { color: var(--cream); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); }
+.eyebrow.on-dark .dot { background: var(--gold-soft); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 26px; border-radius: 6px; font-size: 14.5px; font-weight: 600;
+  border: 1px solid transparent; transition: all .2s ease; white-space: nowrap;
+}
+.btn-primary { background: var(--forest); color: #fff; box-shadow: 0 8px 24px rgba(23,144,153,0.28); }
+.btn-primary:hover { background: var(--forest-deep); transform: translateY(-1px); }
+.btn-invert { background: var(--cream); color: var(--forest-deep); }
+.btn-invert:hover { background: #fff; transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--text); border-color: var(--line); }
+.btn-outline:hover { border-color: var(--forest); color: var(--forest); }
+.btn-outline-dark { background: transparent; color: var(--cream); border-color: var(--line-on-dark); }
+.btn-outline-dark:hover { border-color: var(--cream); }
+.btn-sm { padding: 10px 18px; font-size: 13px; }
+.btn-text { font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.btn-text:hover { opacity: .65; }
+
+.num-item .n { font-family: var(--font-display); font-size: 15px; color: var(--text-faint); }
+.num-item .rule { width: 28px; height: 1px; background: var(--gold); margin: 10px 0 14px; }
+.num-item h4, .num-item h3 { font-family: var(--font-display); }
+
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-m); }
+
+.glass {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.glass-light {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+.divider { border-top: 1px solid var(--line); }
+.divider-dark { border-top: 1px solid var(--line-on-dark); }
+
+.marquee-track { display: flex; width: max-content; animation: marquee-scroll 32s linear infinite; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+
+/* =====================================================================
+   SYSTEM V — Vitalis-brief design system. Home + global Header/Footer.
+   Flat cream/ink canvas, pill buttons with circular arrow chips, hairline
+   bento grids, wave dividers. Roll out to remaining pages after sign-off.
+   ===================================================================== */
+.v-shell { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px) { .v-shell { padding: 0 32px; } }
+@media (min-width: 1024px) { .v-shell { padding: 0 40px; } }
+
+.v-section { padding: 64px 0; }
+@media (min-width: 1024px) { .v-section { padding: 140px 0; } }
+.v-section-tight { padding: 48px 0; }
+@media (min-width: 1024px) { .v-section-tight { padding: 90px 0; } }
+
+.bg-v-cream { background: var(--v-cream); color: var(--v-text); }
+.bg-v-ink { background: var(--v-ink); color: var(--v-white); }
+
+.v-h-xl { font-size: clamp(38px, 6vw, 72px); line-height: 1.0; letter-spacing: -0.02em; font-weight: 500; }
+.v-h-lg { font-size: clamp(28px, 4vw, 48px); line-height: 1.04; letter-spacing: -0.02em; font-weight: 500; }
+.v-h-md { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.1; letter-spacing: -0.01em; font-weight: 500; }
+.v-lede { font-size: 17px; color: var(--v-muted); max-width: 620px; line-height: 1.6; }
+
+.v-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--v-text);
+  margin-bottom: 18px;
+}
+.v-eyebrow .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--v-accent-deep); flex-shrink: 0; box-shadow: 0 0 0 4px rgba(190,252,255,0.45); }
+.v-eyebrow.on-ink { color: var(--v-white); }
+.v-eyebrow.on-ink .dot { background: var(--v-accent); }
+
+.v-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 6px 6px 22px; border-radius: 999px;
+  font-size: 14.5px; font-weight: 600;
+  border: 1px solid transparent; transition: all .25s ease; white-space: nowrap;
+  text-decoration: none;
+}
+.v-btn .chip {
+  width: 38px; height: 38px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+  transition: transform .25s ease; flex-shrink: 0;
+}
+.v-btn:hover .chip { transform: translateX(3px) rotate(45deg); }
+
+.v-btn-accent { background: var(--v-accent); color: var(--v-ink-deep); }
+.v-btn-accent .chip { background: var(--v-ink); color: var(--v-white); }
+.v-btn-accent:hover { background: var(--v-accent-deep); }
+
+.v-btn-white { background: var(--v-white); color: var(--v-ink-deep); }
+.v-btn-white .chip { background: var(--v-cream); color: var(--v-ink); }
+.v-btn-white:hover { background: var(--v-ink-tint); }
+
+.v-btn-dark { background: var(--v-ink); color: var(--v-white); }
+.v-btn-dark .chip { background: var(--v-charcoal); color: var(--v-white); }
+.v-btn-dark:hover { background: var(--v-ink-deep); }
+
+.v-btn-sm { padding: 4px 4px 4px 18px; font-size: 13px; }
+.v-btn-sm .chip { width: 32px; height: 32px; }
+
+.v-btn-text { font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+
+.v-card-photo { border-radius: var(--v-radius-photo); overflow: hidden; }
+.v-card-panel { border-radius: var(--v-radius-card); overflow: hidden; }
+
+.v-bento { display: grid; border-top: 1px solid var(--v-line-on-dark); border-left: 1px solid var(--v-line-on-dark); }
+.v-bento.on-cream { border-color: var(--v-line); }
+.v-bento > div { border-right: 1px solid var(--v-line-on-dark); border-bottom: 1px solid var(--v-line-on-dark); padding: 36px; }
+.v-bento.on-cream > div { border-color: var(--v-line); }
+
+.v-divider { border-top: 1px solid var(--v-line); }
+.v-divider-dark { border-top: 1px solid var(--v-line-on-dark); }
+
+.v-name-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--v-white); border-radius: 999px; padding: 8px 16px 8px 8px;
+  box-shadow: var(--v-shadow-nav);
+}
+
+.v-glass {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+@keyframes v-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+.v-scroll-cue { animation: v-bob 1.6s ease-in-out infinite; }
+}
